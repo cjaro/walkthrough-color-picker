@@ -1,0 +1,7 @@
+.colorBlock {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border-style: solid;
+  border-top: 5px;
+}

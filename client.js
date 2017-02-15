@@ -1,6 +1,8 @@
+var colorArray = ['Pink', 'Red', 'OrangeRed', 'DarkOrange', 'Orange', 'Yellow', 'YellowGreen', 'Green', 'DodgerBlue', 'Blue', 'DarkViolet', 'Purple', 'Indigo']; //colors to use later
+var randomColor = '';
+
 $(document).ready(function(){
   console.log('jQuery is ready to go');
-  var colorArray = ['AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Blue', 'burlywood']; //colors to use later
 
   for (var i = 0; i < colorArray.length; i++) {
     colorArray[i]
@@ -13,19 +15,26 @@ $(document).ready(function(){
   }
 
   $('#colorBlockContainer').on('click', '.colorBlock', function(){ //event listener for clicks
-    console.log('$(this).data().colorOfBlock : ', $(this).data().colorOfBlock);
+    // console.log('$(this).data().colorOfBlock : ', $(this).data().colorOfBlock);
     var colorOfBlockSelected = $(this).data().colorOfBlock;
     if(randomColor == colorOfBlockSelected){
+      //user got it right
       $('#responseSection').text('You got it!');
+      chooseNewRandomColor();
+
     } else {
       $('#responseSection').text('Oh no! That is not right!');
     }
   });
 
-  // select random color and add to DOM
-  var randomNumberSelected = randomNumber(0, colorArray.length-1); //get random number 0 through 4 (in this case)
-  var randomColor = colorArray[randomNumberSelected]; //uses randomNumberSelected(0-4) to pick a color from colorArray
-  $('#userColorPrompt').text(randomColor);
+  chooseNewRandomColor();
+
+  function chooseNewRandomColor(){
+    // select random color and add to DOM
+    var randomNumberSelected = randomNumber(0, colorArray.length-1); //get random number 0 through 4 (in this case)
+    randomColor = colorArray[randomNumberSelected]; //uses randomNumberSelected(0-4) to pick a color from colorArray
+    $('#userColorPrompt').text(randomColor);
+  }
 
 });
 
